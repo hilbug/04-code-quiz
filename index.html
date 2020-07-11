@@ -54,16 +54,17 @@
             <!-- Section for Question and Answers // Show upon Start-->
             <section id="questions">
                 <div class="row">
-                    <div class="col-12">
-                        <h2 id="question" class="d-flex justify-content-center">I'm a question</h2>
-                        <ul class="px-0 py-0">
-                            <li class="d-flex justify-content-center mb-3"><button id="answer1" type="button"
+                    <div class="col-4"></div>
+                    <div class="col-8">
+                        <h2 id="question">I'm a question</h2>
+                        <ul class="px-0 py-0 nobullets">
+                            <li class="mb-3"><button id="answer1" type="button"
                                     class="btn btn-success">Answer1</button></li>
-                            <li class="d-flex justify-content-center mb-3"><button id="answer2" type="button"
+                            <li class="mb-3"><button id="answer2" type="button"
                                     class="btn btn-success">Answer2</button></li>
-                            <li class="d-flex justify-content-center mb-3"><button id="answer3" type="button"
+                            <li class="mb-3"><button id="answer3" type="button"
                                     class="btn btn-success">Answer3</button></li>
-                            <li class="d-flex justify-content-center mb-3"><button id="answer4" type="button"
+                            <li class="mb-3"><button id="answer4" type="button"
                                     class="btn btn-success">Answer4</button></li>
                         </ul>
                     </div>
@@ -71,18 +72,38 @@
             </section>
 
             <!-- Section for Final Score and Name -->
-            <section>
+            <section id="final">
                 <div class="row">
-                    <div class="col-12">
-                        <h2 class="d-flex justify-content-center text-left">All done!</h2>
-                        <p class="d-flex justify-content-center text-left">Your final score is: <span id="score" class="pl-1">0</span></p>
-                        <p class="d-flex justify-content-center text-left align-items-center">Enter initials: <span class="pl-1"><input placeholder="initials" id="initials" /></span>
-                            <span class="pl-1"><button id="add-btn" class="btn btn-success pl-1">Submit</button></span></p>
+                    <div class="col-4"></div>
+                    <div class="col-8">
+                        <h2>All done!</h2>
+                        <p>Your final score is: <span id="score" class="pl-1">0</span></p>
+                        <p>Enter initials: <span class="pl-1"><input placeholder="initials" id="initials" /></span>
+                            <span class="pl-1"><button id="add-btn" class="btn btn-success pl-1">Submit</button></span>
+                        </p>
                     </div>
                 </div>
             </section>
 
             <!-- Section for High Scores -->
+            <section id="highscores">
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-8">
+                        <!-- Div to move everything over as a box? -->
+                        <!-- <div class="d-flex justify-content-center"> -->
+                            <h2>High Scores</h2>
+                            <!-- High scores should be added as a sorted desc list -->
+                            <ol>
+                                <li></li>
+                            </ol>
+                            <p><span><button id="goback" class="btn btn-success pl-1">Go back</button></span>
+                                <span class="pl-1"><button id="clearscores" class="btn btn-success pl-1">Clear
+                                        scores</button></span></p>
+                        <!-- </div> -->
+                    </div>
+                </div>
+            </section>
 
             <!-- Container Ends -->
         </div>
