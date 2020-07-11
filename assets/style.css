@@ -1,0 +1,11 @@
+/* hide sections until they are shown via the click events */
+
+/* #questions,
+#final,
+#highscores {
+    display: none;  
+  }  */
+
+  ul.nobullets {
+    list-style-type: none;
+  }
