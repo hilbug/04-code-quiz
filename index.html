@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="./assets/style.css">
+
+    <!-- Page Title -->
+    <title>Javascript Code Quiz</title>
+</head>
+
+<body>
+    <!-- Container for Header -->
+    <header class="container-fluid mb-5">
+        <!-- div for scores link and time -->
+        <div class="row">
+            <!-- View highscores -->
+            <div class="col-3">
+                <a href="">View Highscores</a>
+            </div>
+            <div class="col-6">
+                <h1>Coding Quiz Challenge</h1>
+            </div>
+            <!-- Timer -->
+            <div class="col-3">
+                <p>Time: <span id="time">0</span></p>
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <!-- Container for Intro, Questions, Answers -->
+        <div class="container">
+            <!-- Section for H1 and Intro // Hide upon Start-->
+            <section id="intro">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="d-flex justify-content-center">Welcome to the Javascript Coding Quiz Challenge!</h2>
+                        <p class="d-flex justify-content-center">Intro here</p>
+                        <p class="d-flex justify-content-center"><button id="start" type="button"
+                                class="btn btn-success">Start Quiz</button></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section for Question and Answers // Show upon Start-->
+            <section id="questions">
+                <div class="row">
+                    <div class="col-12">
+                        <h2 id="question" class="d-flex justify-content-center">I'm a question</h2>
+                        <ul class="px-0 py-0">
+                            <li class="d-flex justify-content-center mb-3"><button id="answer1" type="button"
+                                    class="btn btn-success">Answer1</button></li>
+                            <li class="d-flex justify-content-center mb-3"><button id="answer2" type="button"
+                                    class="btn btn-success">Answer2</button></li>
+                            <li class="d-flex justify-content-center mb-3"><button id="answer3" type="button"
+                                    class="btn btn-success">Answer3</button></li>
+                            <li class="d-flex justify-content-center mb-3"><button id="answer4" type="button"
+                                    class="btn btn-success">Answer4</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section for Final Score and Name -->
+            <section>
+                <div class="row">
+                    <div class="col-12">
+                        <h2 class="d-flex justify-content-center text-left">All done!</h2>
+                        <p class="d-flex justify-content-center text-left">Your final score is: <span id="score" class="pl-1">0</span></p>
+                        <p class="d-flex justify-content-center text-left align-items-center">Enter initials: <span class="pl-1"><input placeholder="initials" id="initials" /></span>
+                            <span class="pl-1"><button id="add-btn" class="btn btn-success pl-1">Submit</button></span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section for High Scores -->
+
+            <!-- Container Ends -->
+        </div>
+    </main>
+
+    <!-- Javascript  -->
+    <script src="./assets/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
