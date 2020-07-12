@@ -24,7 +24,8 @@
         <div class="row">
             <!-- View highscores -->
             <div class="col-6">
-                <a href="">View Highscores</a>
+                <!-- <a href="">View Highscores</a> -->
+                <button id="view-scores" type="button" class="btn btn-secondary d-inline-block mt-1">View High Scores</button>
             </div>
             <!-- Timer -->
             <div class="col-6">
@@ -64,7 +65,7 @@
                             <li class="mb-3"><button id="answer4" type="button"
                                     class="btn btn-success">Answer4</button></li>
                         </ul>
-                        <div id="yaynay">
+                        <div id="yaynay" class="font-weight-light font-italic">
                             <hr>
                             <p id="yay">Correct!</p>
                             <p id="nay">Wrong!</p>
@@ -81,7 +82,7 @@
                         <h2>All done!</h2>
                         <p>Your final score is: <span id="score" class="pl-1">0</span></p>
                         <p>Enter initials: <span class="ml-1"><input placeholder="initials" id="initials" /></span>
-                            <button id="add-btn" class="btn btn-success mx-1 my-1 d-inline-block">Submit</button>
+                            <button id="submit-score" class="btn btn-success mx-1 my-1 d-inline-block">Submit</button>
                         </p>
                     </div>
                 </div>
