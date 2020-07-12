@@ -1,24 +1,44 @@
 // variables for page elements
-    // time... let timeEl = document.querySelector("#time");
-    // score
+    // time
+    let timeEl = document.querySelector("#time");
+   
     // user initials
+    let initialsEl = document.querySelector("#initials");
     // sections
         // section intro
+        const introEl = document.querySelector("#intro");
         // section questions
+        const questionsEl = document.querySelector("#questions");
         // section final
+        const finalEl = document.querySelector("#final");
         // section highscores
+        const highscoresEl = document.querySelector("#highscores");
         // div yaynay
+        const yaynayEl = document.querySelector("#yaynay");
     // buttons
-        // start 
+        // start
+        const startBtn = document.querySelector("#start");
         // answer1
+        const ans1Btn = document.querySelector("#answer1");
         // answer2
+        const ans2Btn = document.querySelector("#answer2");
         // answer3
+        const ans3Btn = ocument.querySelector("#answer3");
         // answer4
+        const ans4Btn = document.querySelector("#answer4");
         // submit-score
+        const submitScrBtn = document.querySelector("#submit-score");
         // goback
+        const goBackBtn = document.querySelector("#goback");
         // clearscores
+        const clearScrBtn = document.querySelector("#clearscores");
         // view-scores
+        const viewScrBtn = document.querySelector("#view-scores");
+    
     // Object for Question, answer, true/false
+
+    // Set via a function?
+         // score - this will either be 0 or the left over time. DO we need this or can we just use time?
 
 //Events
     // click start quiz
