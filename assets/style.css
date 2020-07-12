@@ -1,8 +1,16 @@
-/* hide sections until they are shown via the click events */
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap');
 
+* {
+    font-family: 'Noto Sans TC', sans-serif;
+}
+/* hide sections until they are shown via the click events */
 /* #questions,
 #final,
-#highscores {
+#highscores,
+#yaynay,
+#yay,
+#nay {
     display: none;  
   }  */
 
