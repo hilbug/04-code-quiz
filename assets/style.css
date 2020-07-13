@@ -5,14 +5,14 @@
     font-family: 'Noto Sans TC', sans-serif;
 }
 /* hide sections until they are shown via the click events */
-/* #questions,
+#questions,
 #final,
 #highscores,
 #yaynay,
 #yay,
 #nay {
     display: none;  
-  }  */
+  } 
 
   ul.nobullets {
     list-style-type: none;
