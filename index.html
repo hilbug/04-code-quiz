@@ -29,7 +29,7 @@
             </div>
             <!-- Timer -->
             <div class="col-6">
-                <p class="d-flex justify-content-end">Time: <span id="time">0</span></p>
+                <p class="d-flex justify-content-end time">Time:75s</p>
             </div>
         </div>
     </header>
@@ -57,13 +57,13 @@
                         <h2 id="question">I'm a question</h2>
                         <ul class="px-0 py-0 nobullets">
                             <li class="mb-3"><button id="answer1" type="button"
-                                    class="btn btn-success">Answer1</button></li>
+                                    class="btn btn-success ansBtn">Answer1</button></li>
                             <li class="mb-3"><button id="answer2" type="button"
-                                    class="btn btn-success">Answer2</button></li>
+                                    class="btn btn-success ansBtn">Answer2</button></li>
                             <li class="mb-3"><button id="answer3" type="button"
-                                    class="btn btn-success">Answer3</button></li>
+                                    class="btn btn-success ansBtn">Answer3</button></li>
                             <li class="mb-3"><button id="answer4" type="button"
-                                    class="btn btn-success">Answer4</button></li>
+                                    class="btn btn-success ansBtn">Answer4</button></li>
                         </ul>
                         <div id="yaynay" class="font-weight-light font-italic">
                             <hr>
@@ -81,6 +81,7 @@
                     <div class="col-6">
                         <h2>All done!</h2>
                         <p>Your final score is: <span id="score" class="pl-1">0</span></p>
+                        <!-- <p class="score">Your final score is: </p> -->
                         <p>Enter initials: <span class="ml-1"><input placeholder="initials" id="initials" /></span>
                             <button id="submit-score" class="btn btn-success mx-1 my-1 d-inline-block">Submit</button>
                         </p>
