@@ -2,13 +2,10 @@
 // time and score
 let timeEl = document.querySelector("p.time");
 let secondsLeft = 75;
-//let secondsLeft = 5;
-let scoreEl = document.querySelector("p.score");
-
-// user initials
-let initialsEl = document.querySelector("#initials");
+let scoreEl = document.querySelector("#score");
 
 // sections
+
 // section intro
 const introEl = document.querySelector("#intro");
 
@@ -17,21 +14,24 @@ const introEl = document.querySelector("#intro");
 const questionsEl = document.querySelector("#questions");
 //where question goes
 let questionEl = document.querySelector("#question");
-// let totalQuestions = questions.length;
-// let currentQuestionIndex = 0; // store the question the user is on; not sure I need
-
-// section final
-const finalEl = document.querySelector("#final");
-
-// section highscores
-const highscoresEl = document.querySelector("#highscores");
-const scoreListEl = document.querySelector("#score-list");
-let scoreList = [{ initials: "" }];
-
+// how many questions they have answered
+let questionCount = 0;
 // div yaynay
 const yaynayEl = document.querySelector("#yaynay");
 const yayEl = document.querySelector("#yay");
 const nayEl = document.querySelector("#nay");
+
+// section final
+const finalEl = document.querySelector("#final");
+// user initials
+let initialsInput = document.querySelector("#initials");
+
+// section highscores
+const highscoresEl = document.querySelector("#highscores");
+// ordered list
+const scoreListEl = document.querySelector("#score-list");
+// array of scores
+let scoreList = [{ initials: "", score: secondsLeft}];
 
 // buttons
 // start
@@ -79,17 +79,16 @@ const questions = [ // array of objects
         // question 3
         question: "String values must be enclosed within ____ when being assigned to variables.",
         answers: ["1. commmas", "2. curly brackets", "3. quotes", "4. parentheses"],
-        correctAnswer: 2
+        correctAnswer: "2"
     },
     {
         // question 4
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
         answers: ["1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log"], 
-        correctAnswer: 3
+        correctAnswer: "3"
     }
 ];
-// how many questions they have answered
-let questionCount = 0;
+
 
 // Functions
 
@@ -99,27 +98,26 @@ function setTime() {
         secondsLeft--;
         timeEl.textContent = `Time:${secondsLeft}s`;
 
-        if (secondsLeft === 0) {
+        if (secondsLeft === 0 || questionCount === questions.length) {
             clearInterval(timerInterval);
             questionsEl.style.display = "none";
             finalEl.style.display = "block";
+            scoreEl.textContent = secondsLeft;
         }
     }, 1000);
 }
 
-// start quiz
+// start quiz with timer and set up questions
 function startQuiz() {
     introEl.style.display = "none";
     questionsEl.style.display = "block";
     questionCount = 0;
 
     setTime();
-    setQuestion(questionCount); // not sure this should go here
-    //showQuestion();
+    setQuestion(questionCount); 
 }
 
-// function to set question
-// setQuestion takes in a count and displays the next question/answers
+// function to set question; takes in a count and displays the next question/answers
 function setQuestion(id) {
     if (id < questions.length) {
         questionEl.textContent = questions[id].question;
@@ -127,93 +125,52 @@ function setQuestion(id) {
         ans2Btn.textContent = questions[id].answers[1];
         ans3Btn.textContent = questions[id].answers[2];
         ans4Btn.textContent = questions[id].answers[3];
-        
-        //added upon when asnwering a question
     }
-
-    if (id > questions.length) {
-        questionsEl.style.display = "none";
-        finalEl.style.display = "block";
-    }
-
 }
 
-
-// Senseless Notes....
-// if (currentQuestionIndex < questions.length) {
-//     id++;
-// }
-
-// if (event.target.matches("button")) {
-//     event.preventDefault();
-//     id++;
-// }
-
-
-// if (id > questions.length) {
-//     questionsEl.style.display = "none";
-//     finalEl.style.display = "block";
-// }
-
-
-// function showQuestion(index) {
-//     const q = questions[index];
-
-//     questionEl.textContent = q.question;
-//     ans1Btn.textContent = q.answers.a;
-//     ans2Btn.textContent = q.answers.b;
-//     ans3Btn.textContent = q.answers.c;
-//     ans4Btn.textContent = q.answers.d;
-//     index++;
-
-    // if (event.target.matches("button")) {
-    //     event.preventDefault();
-    //     id++;
-    // }
-
-
-
-    // if (id > questions.length) {
-    //     questionsEl.style.display = "none";
-    //     finalEl.style.display = "block";
-    // }
-
-//}
 // function to check answer and then move to next question
 function checkAnswer(event) {
     event.preventDefault();
-    console.log(event.target);
-    console.log(event.target.value);
-    //id of question they clicked
-    //answer we are on
-    console.log(event.target.id);
-    console.log(questions[questionCount].correctAnswer);
+    
     //compare to the right answer
-    if (questions[questionCount].correctAnswer == event.target.value) {
-        console.log("i'm true");
+    if (questions[questionCount].correctAnswer === event.target.value) {
+        console.log("positive test");
         yaynayEl.style.display = "block";
         yayEl.style.display = "block";
-    };
+    } else if (questions[questionCount].correctAnswer !== event.target.value) {
+        console.log("negative test");
+        yaynayEl.style.display = "block";
+        nayEl.style.display = "block";
+        yayEl.style.display = "none";
+        secondsLeft = secondsLeft - 10
+    } 
+    
+    // increment so the questions index is increased
     questionCount++;
 
+    // call setQuestion to bring in next question when any ansBtn is clicked
     setQuestion(questionCount);
-    //figure out how to compare the correct answer vs the ID of the button i clicked.
-    //parseInt? redfine to be arrays? have if else -question 1, and they select question a etc
-    //looks at last character of id parse int last character and compare that... 
-    //after figure out answer, need to respond right or wrong then add to question count and setQuestion with new count
 }
+
+// // section highscores
+// const highscoresEl = document.querySelector("#highscores");
+// // ordered list
+// const scoreListEl = document.querySelector("#score-list");
+// // array of scores
+// let scoreList = [{ initials: "", score: secondsLeft}];
 
 function addScore(event) {
     event.preventDefault();
-    let init = initialsEl.value;
-    let li = document.createElement("li");
-    li.id = secondsLeft;
-    li.textContent = scoreList.length;
-    scoreList.push({ initials: init })
-    scoreListEl.append(li);
 
     finalEl.style.display = "none";
     highscoresEl.style.display = "block";
+
+    let init = initialsInput.value;
+    let li = document.createElement("li");
+    //li.id = secondsLeft;
+    li.textContent = scoreList.length;
+    scoreList.push({ initials: init })
+    scoreListEl.append(li);
 
     //not working: "cannot read property append of null at HTMLButtonEvent.addScore"
     //need to add to local storage...
@@ -252,6 +209,27 @@ ansBtn.forEach(item => {
 
 // Add score
 submitScrBtn.addEventListener("click", addScore);
+
+// Go Back Button
+goBackBtn.addEventListener("click", function() {
+    highscoresEl.style.display = "none";
+    introEl.style.display = "block";
+    secondsLeft = 75;
+});
+
+// View/Hide High Scores Button
+viewScrBtn.addEventListener("click", function() {
+    //highscoresEl.style.display = "block";
+    if (highscoresEl.style.display === "none") {
+        highscoresEl.style.display = "block";
+        //viewScrBtn.textContent = "Hide High Scores";
+      } else if (highscoresEl.style.display === "block") {
+        highscoresEl.style.display = "none";
+        //viewScrBtn.textContent = "View High Scores";
+      } else {
+          return alert("No scores to show.");
+      }
+});
 
 
 // Pseudocode
@@ -299,3 +277,19 @@ submitScrBtn.addEventListener("click", addScore);
     // need to create a score list and then the li gest appended as a child.
     // ojbect.keys
     // sort w3 schools examples on score
+
+    //from tutor about check answer:
+    //figure out how to compare the correct answer vs the ID of the button i clicked.
+    //parseInt? redfine to be arrays? have if else -question 1, and they select question a etc
+    //looks at last character of id parse int last character and compare that... 
+    //after figure out answer, need to respond right or wrong then add to question count and setQuestion with new count
+
+    // function checkAnswer(event) { console.logs...
+    //     console.log(event.target);
+    //     console.log(event.target.value);
+    //     //id of question they clicked
+    //     //answer we are on
+    //     console.log(event.target.id);
+    //     console.log(questions[questionCount].correctAnswer);
+    //     if (questions[questionCount].correctAnswer === event.target.value) {
+    //         console.log("i'm true");
