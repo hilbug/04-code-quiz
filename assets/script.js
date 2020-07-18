@@ -29,9 +29,9 @@ let initialsInput = document.querySelector("#initials");
 // section highscores
 const highscoresEl = document.querySelector("#highscores");
 // ordered list
-const scoreListEl = document.querySelector("#score-list");
+let scoreListEl = document.querySelector("#score-list");
 // array of scores
-let scoreList = [{ initials: "", score: secondsLeft}];
+let scoreList = [];
 
 // buttons
 // start
@@ -84,7 +84,7 @@ const questions = [ // array of objects
     {
         // question 4
         question: "A very useful tool used during development and debugging for printing content to the debugger is:",
-        answers: ["1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log"], 
+        answers: ["1. Javascript", "2. terminal/bash", "3. for loops", "4. console.log"],
         correctAnswer: "3"
     }
 ];
@@ -94,7 +94,7 @@ const questions = [ // array of objects
 
 // timer
 function setTime() {
-    var timerInterval = setInterval(function () {
+    let timerInterval = setInterval(function () {
         secondsLeft--;
         timeEl.textContent = `Time:${secondsLeft}s`;
 
@@ -114,7 +114,7 @@ function startQuiz() {
     questionCount = 0;
 
     setTime();
-    setQuestion(questionCount); 
+    setQuestion(questionCount);
 }
 
 // function to set question; takes in a count and displays the next question/answers
@@ -131,23 +131,32 @@ function setQuestion(id) {
 // function to check answer and then move to next question
 function checkAnswer(event) {
     event.preventDefault();
-    
+
     //compare to the right answer
     if (questions[questionCount].correctAnswer === event.target.value) {
+        // show correct
         console.log("positive test");
         yaynayEl.style.display = "block";
         yayEl.style.display = "block";
+        setTimeout(function () {
+            yayEl.style.display = 'none';
+        }, 1000);
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
+        // show wrong
         console.log("negative test");
         yaynayEl.style.display = "block";
         nayEl.style.display = "block";
         yayEl.style.display = "none";
-        secondsLeft = secondsLeft - 10
-    } 
-    
-    // increment so the questions index is increased
-    questionCount++;
+        secondsLeft = secondsLeft - 10;
+        setTimeout(function () {
+            nayEl.style.display = 'none';
+        }, 1000);
+    }
 
+    // increment so the questions index is increased
+    if (questionCount < questions.length) {
+        questionCount++;
+    }
     // call setQuestion to bring in next question when any ansBtn is clicked
     setQuestion(questionCount);
 }
@@ -157,7 +166,9 @@ function checkAnswer(event) {
 // // ordered list
 // const scoreListEl = document.querySelector("#score-list");
 // // array of scores
-// let scoreList = [{ initials: "", score: secondsLeft}];
+// let scoreList = [];
+//should be const scoreList = 
+// let scoreEl = document.querySelector("#score");
 
 function addScore(event) {
     event.preventDefault();
@@ -166,17 +177,20 @@ function addScore(event) {
     highscoresEl.style.display = "block";
 
     let init = initialsInput.value;
-    let li = document.createElement("li");
-    //li.id = secondsLeft;
-    li.textContent = scoreList.length;
-    scoreList.push({ initials: init })
-    scoreListEl.append(li);
+    scoreList.push({ initials: init, score: secondsLeft });
+    
+    scoreListEl.innerHTML="";
+    for (i = 0; i < scoreList.length; i++) {
+        let li = document.createElement("li");
+        li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
+        scoreListEl.append(li);
+    }
 
-    //not working: "cannot read property append of null at HTMLButtonEvent.addScore"
     //need to add to local storage...
-
     storeScores();
     displayScores();
+
+    console.log(scoreList);
 }
 
 function storeScores() {
@@ -194,6 +208,11 @@ function displayScores() {
     }
 }
 
+function clearScores() {
+    localStorage.clear();
+    scoreListEl.innerHTML="";
+}
+
 
 
 // EventListeners
@@ -205,30 +224,34 @@ startBtn.addEventListener("click", startQuiz);
 
 ansBtn.forEach(item => {
     item.addEventListener('click', checkAnswer);
-  });
+});
 
 // Add score
 submitScrBtn.addEventListener("click", addScore);
 
 // Go Back Button
-goBackBtn.addEventListener("click", function() {
+goBackBtn.addEventListener("click", function () {
     highscoresEl.style.display = "none";
     introEl.style.display = "block";
     secondsLeft = 75;
+    timeEl.textContent = `Time:${secondsLeft}s`;
 });
 
+// Clear the scores
+clearScrBtn.addEventListener("click", clearScores);
+
 // View/Hide High Scores Button
-viewScrBtn.addEventListener("click", function() {
+viewScrBtn.addEventListener("click", function () {
     //highscoresEl.style.display = "block";
     if (highscoresEl.style.display === "none") {
         highscoresEl.style.display = "block";
         //viewScrBtn.textContent = "Hide High Scores";
-      } else if (highscoresEl.style.display === "block") {
+    } else if (highscoresEl.style.display === "block") {
         highscoresEl.style.display = "none";
         //viewScrBtn.textContent = "View High Scores";
-      } else {
-          return alert("No scores to show.");
-      }
+    } else {
+        return alert("No scores to show.");
+    }
 });
 
 
@@ -293,3 +316,7 @@ viewScrBtn.addEventListener("click", function() {
     //     console.log(questions[questionCount].correctAnswer);
     //     if (questions[questionCount].correctAnswer === event.target.value) {
     //         console.log("i'm true");
+
+    // Object.entries.localStorage
+    //localStorage.getItem(); to retreive, stringify, then save to storage
+    // take out of local storage, manipulate it, then re-set
