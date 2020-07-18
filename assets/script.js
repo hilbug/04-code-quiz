@@ -132,25 +132,22 @@ function setQuestion(id) {
 function checkAnswer(event) {
     event.preventDefault();
 
-    //compare to the right answer
+    // show section for yaynay and append message
+    yaynayEl.style.display = "block";
+    let p = document.createElement("p");
+    yaynayEl.appendChild(p);
+
+    // time out after 1 second
+    setTimeout(function () {
+        p.style.display = 'none';
+    }, 1000);
+
+    // answer checker
     if (questions[questionCount].correctAnswer === event.target.value) {
-        // show correct
-        console.log("positive test");
-        yaynayEl.style.display = "block";
-        yayEl.style.display = "block";
-        setTimeout(function () {
-            yayEl.style.display = 'none';
-        }, 1000);
+        p.textContent = "Correct!";
     } else if (questions[questionCount].correctAnswer !== event.target.value) {
-        // show wrong
-        console.log("negative test");
-        yaynayEl.style.display = "block";
-        nayEl.style.display = "block";
-        yayEl.style.display = "none";
         secondsLeft = secondsLeft - 10;
-        setTimeout(function () {
-            nayEl.style.display = 'none';
-        }, 1000);
+        p.textContent = "Wrong!";
     }
 
     // increment so the questions index is increased
