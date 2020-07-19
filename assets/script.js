@@ -5,7 +5,6 @@ let secondsLeft = 75;
 let scoreEl = document.querySelector("#score");
 
 // sections
-
 // section intro
 const introEl = document.querySelector("#intro");
 
@@ -18,8 +17,6 @@ let questionEl = document.querySelector("#question");
 let questionCount = 0;
 // div yaynay
 const yaynayEl = document.querySelector("#yaynay");
-const yayEl = document.querySelector("#yay");
-const nayEl = document.querySelector("#nay");
 
 // section final
 const finalEl = document.querySelector("#final");
@@ -158,15 +155,6 @@ function checkAnswer(event) {
     setQuestion(questionCount);
 }
 
-// // section highscores
-// const highscoresEl = document.querySelector("#highscores");
-// // ordered list
-// const scoreListEl = document.querySelector("#score-list");
-// // array of scores
-// let scoreList = [];
-//should be const scoreList = 
-// let scoreEl = document.querySelector("#score");
-
 function addScore(event) {
     event.preventDefault();
 
@@ -177,17 +165,15 @@ function addScore(event) {
     scoreList.push({ initials: init, score: secondsLeft });
     
     scoreListEl.innerHTML="";
-    for (i = 0; i < scoreList.length; i++) {
+    for (let i = 0; i < scoreList.length; i++) {
         let li = document.createElement("li");
         li.textContent = `${scoreList[i].initials}: ${scoreList[i].score}`;
         scoreListEl.append(li);
     }
 
-    //need to add to local storage...
+    // Add to local storage
     storeScores();
     displayScores();
-
-    console.log(scoreList);
 }
 
 function storeScores() {
@@ -205,20 +191,17 @@ function displayScores() {
     }
 }
 
+// clear scores
 function clearScores() {
     localStorage.clear();
     scoreListEl.innerHTML="";
 }
 
-
-
 // EventListeners
 // Start timer and display first question when click start quiz
 startBtn.addEventListener("click", startQuiz);
 
-// eventListener for answer button? 
-// not sure if this is setQuestion or a bigger wrapper function
-
+// Check answers loop
 ansBtn.forEach(item => {
     item.addEventListener('click', checkAnswer);
 });
@@ -239,81 +222,11 @@ clearScrBtn.addEventListener("click", clearScores);
 
 // View/Hide High Scores Button
 viewScrBtn.addEventListener("click", function () {
-    //highscoresEl.style.display = "block";
     if (highscoresEl.style.display === "none") {
         highscoresEl.style.display = "block";
-        //viewScrBtn.textContent = "Hide High Scores";
     } else if (highscoresEl.style.display === "block") {
         highscoresEl.style.display = "none";
-        //viewScrBtn.textContent = "View High Scores";
     } else {
         return alert("No scores to show.");
     }
 });
-
-
-// Pseudocode
-    // startQuiz: click start quiz
-        // x-start timer
-        // moves to question 1
-            // set question
-            // set answers 1 through 4
-        // x-set style.display to none for intro
-        // x-set display for questions to show
-    // click an answer choice - function call to check the question array for answers if button is the right one
-        // office hours notes
-            // increment index number by 1 re-run and update the question you want to display
-            // pass to which item in the array to access.
-            // update view that way.when click on the button and increment to the next one. 
-            // pass in as an argument to that function.
-            // store question they are on now. 
-            // event listener to the buttons and when that clicked fires the event.
-        // question count
-        // if correct, show yay
-        // if incorrect, show nay
-        // if incorrect, deduct 10 from time
-        // set to next question
-            // set question
-            // set answers 1 through 4
-            // loop through to last question
-    // After last question OR time reaches 0
-        // show "final" section
-        // store score (time) to local storage
-    // click submit for initials
-        // show high scores page
-        // add latest entry to high scores/object?
-        // High scores should display as an ordered list descending
-    // click go back button
-        // go back to intro section
-    // click clear scores button
-        // clear the high scores array/object
-    // click view high scores
-        // go to high scores section
-
-    // JSON stringify and parse to save the collection
-    // get all scores, add new score to that
-    // reset localStorage
-    //static key as first param "scores" thena all scores as a list
-    // need to create a score list and then the li gest appended as a child.
-    // ojbect.keys
-    // sort w3 schools examples on score
-
-    //from tutor about check answer:
-    //figure out how to compare the correct answer vs the ID of the button i clicked.
-    //parseInt? redfine to be arrays? have if else -question 1, and they select question a etc
-    //looks at last character of id parse int last character and compare that... 
-    //after figure out answer, need to respond right or wrong then add to question count and setQuestion with new count
-
-    // function checkAnswer(event) { console.logs...
-    //     console.log(event.target);
-    //     console.log(event.target.value);
-    //     //id of question they clicked
-    //     //answer we are on
-    //     console.log(event.target.id);
-    //     console.log(questions[questionCount].correctAnswer);
-    //     if (questions[questionCount].correctAnswer === event.target.value) {
-    //         console.log("i'm true");
-
-    // Object.entries.localStorage
-    //localStorage.getItem(); to retreive, stringify, then save to storage
-    // take out of local storage, manipulate it, then re-set
