@@ -1,5 +1,9 @@
 # 04-code-quiz
-A timed code quiz run in the browser and features multiple-choice questions about javascript with dynamically updated HTML and CSS powered by javascript.
+
+## Description
+This timed code quiz run features multiple-choice questions about javascript with dynamically updated HTML and CSS powered by vanilla javascript. The HTML was built using Bootstrap's responsive design.
+
+The quiz can be accessed here: https://hilbug.github.io/04-code-quiz/
 
 ## User Story
 
@@ -24,3 +28,22 @@ THEN the game is over
 WHEN the game is over
 THEN I can save my initials and score
 ```
+
+## Screenshots
+
+### Start Quiz section
+<img width="1277" alt="Screen Shot 2020-07-19 at 1 27 45 AM" src="https://user-images.githubusercontent.com/65197724/87867962-d0c6ff80-c95f-11ea-95f5-15c869b3f9c5.png">
+
+### Question section
+<img width="1274" alt="Screen Shot 2020-07-19 at 1 28 10 AM" src="https://user-images.githubusercontent.com/65197724/87867975-e2a8a280-c95f-11ea-9f5f-2598746971c8.png">
+
+### Submit scores section
+<img width="1270" alt="Screen Shot 2020-07-19 at 1 29 07 AM" src="https://user-images.githubusercontent.com/65197724/87867989-fe13ad80-c95f-11ea-84a8-05c4d1b5c358.png">
+
+### High scores section
+<img width="1266" alt="Screen Shot 2020-07-19 at 1 29 28 AM" src="https://user-images.githubusercontent.com/65197724/87867995-0b309c80-c960-11ea-8484-7f1fc9a9ccf5.png">
+
+## Honorable Mentions
+Many thanks to study group/TA/tutor for helping me with my setQuestion and local storage!
+
+Background image from: https://unsplash.com/@markusspiske
