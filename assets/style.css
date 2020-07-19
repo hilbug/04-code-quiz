@@ -5,6 +5,10 @@
     font-family: 'Noto Sans TC', sans-serif;
 }
 
+body {
+    background-color: beige;
+}
+
 /* hide sections until they are shown via the click events */
 #questions,
 #final,
