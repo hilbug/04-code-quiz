@@ -161,8 +161,17 @@ function addScore(event) {
     finalEl.style.display = "none";
     highscoresEl.style.display = "block";
 
-    let init = initialsInput.value;
+    let init = initialsInput.value.toUpperCase();
     scoreList.push({ initials: init, score: secondsLeft });
+
+    // sort scores
+    scoreList = scoreList.sort((a, b) => {
+        if (a.score < b.score) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
     
     scoreListEl.innerHTML="";
     for (let i = 0; i < scoreList.length; i++) {
@@ -184,14 +193,6 @@ function displayScores() {
     // Get stored scores from localStorage
     // Parsing the JSON string to an object
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
-
-    storedScoreList = storedScoreList.sort((a, b) => {
-        if (a.score < b.score) {
-          return 1;
-        } else {
-          return -1;
-        }
-      });
 
     // If scores were retrieved from localStorage, update the scorelist array to it
     if (storedScoreList !== null) {
