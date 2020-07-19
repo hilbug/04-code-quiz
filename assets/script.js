@@ -185,6 +185,14 @@ function displayScores() {
     // Parsing the JSON string to an object
     let storedScoreList = JSON.parse(localStorage.getItem("scoreList"));
 
+    storedScoreList = storedScoreList.sort((a, b) => {
+        if (a.score < b.score) {
+          return 1;
+        } else {
+          return -1;
+        }
+      });
+
     // If scores were retrieved from localStorage, update the scorelist array to it
     if (storedScoreList !== null) {
         scoreList = storedScoreList;
