@@ -1,7 +1,7 @@
 # 04-code-quiz
 
 ## Description
-This timed code quiz run features multiple-choice questions about javascript with dynamically updated HTML and CSS powered by vanilla javascript. The HTML was built using Bootstrap's responsive design.
+This timed code quiz features multiple-choice questions about javascript with dynamically updated HTML and CSS powered by vanilla javascript. The HTML was built using Bootstrap's responsive design. The javascript questions were taken from the example provided.
 
 The quiz can be accessed here: https://hilbug.github.io/04-code-quiz/
 
@@ -47,3 +47,7 @@ THEN I can save my initials and score
 Many thanks to study group/TA/tutor for helping me with my setQuestion and local storage!
 
 Background image from: https://unsplash.com/@markusspiske
+
+Sticky footer user flexbox from: https://css-tricks.com/couple-takes-sticky-footer/
+
+CSS media query suggestions from: https://web.dev/optimize-css-background-images-with-media-queries/
