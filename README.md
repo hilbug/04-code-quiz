@@ -1,9 +1,13 @@
 # 04-code-quiz
 
 ## Description
-This timed code quiz features multiple-choice questions about javascript with dynamically updated HTML and CSS powered by vanilla javascript. The HTML was built using Bootstrap's responsive design. The javascript questions were taken from the example provided.
+This timed code quiz features multiple-choice questions about javascript. If answered incorrectly, time is deducted. 
 
-The quiz can be accessed here: https://hilbug.github.io/04-code-quiz/
+Deployed app: https://hilbug.github.io/04-code-quiz/
+
+Technologies used are: HTML, CSS, Javascript
+
+Contact: hil.ferraro@gmail.com
 
 ## User Story
 
@@ -44,10 +48,8 @@ THEN I can save my initials and score
 <img width="1266" alt="Screen Shot 2020-07-19 at 1 29 28 AM" src="https://user-images.githubusercontent.com/65197724/87867995-0b309c80-c960-11ea-8484-7f1fc9a9ccf5.png">
 
 ## Honorable Mentions
-Many thanks to study group/TA/tutor for helping me with my setQuestion and local storage!
-
-Background image from: https://unsplash.com/@markusspiske
-
-Sticky footer user flexbox from: https://css-tricks.com/couple-takes-sticky-footer/
-
-CSS media query suggestions from: https://web.dev/optimize-css-background-images-with-media-queries/
+- Many thanks to study group/TA/tutor for helping me with my setQuestion and local storage!
+- Background image from: https://unsplash.com/@markusspiske
+- Sticky footer user flexbox from: https://css-tricks.com/couple-takes-sticky-footer/
+- CSS media query suggestions from: https://web.dev/optimize-css-background-images-with-media-queries/
+- The javascript questions were taken from the example provided.
