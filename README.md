@@ -1,5 +1,7 @@
 # Javascript Quiz
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+
 ## Description
 This timed code quiz features multiple-choice questions about javascript. If answered incorrectly, time is deducted. 
 
